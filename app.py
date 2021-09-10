@@ -22,5 +22,11 @@ def requires_user(func):
 
 
 @app.route("/")
-def hello_world():
-    return "<p>Server running!</p>"
+@requires_user
+def home():
+    """
+    Shows the home page
+    """
+    return "<p>Home page goes here</p>"
+
+
