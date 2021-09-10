@@ -30,6 +30,12 @@ def home():
     return "<p>Home page goes here</p>"
 
 
+@app.route("/user")
+def user():
+    """
+    User log in page
+    """
+    return "<p>User log in goes here</p>"
 
 
 @app.route("/get_data")
