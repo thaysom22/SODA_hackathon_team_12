@@ -3,8 +3,11 @@ import os
 from functools import wraps
 from flask import (Flask, redirect, url_for, session)
 
+
 app = Flask(__name__)
 app.secret_key = os.environ.get("SECRET_KEY")
+app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
+app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 
 
 def requires_user(func):
