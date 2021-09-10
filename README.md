@@ -59,7 +59,7 @@ As a potential visitor (first time visitor) I would like to:
 ### Information Architecture
 #### Database choice
 
-[MongoDB]() is a NoSQL, document-based database which groups data as key-value pairs within documents grouped into collections. MongoDB excels at storing and providing access to unstructured data at scale. 
+[MongoDB]() is a NoSQL, document-based database which groups data as key-value pairs within documents grouped into collections. MongoDB excels at storing and providing access to unstructured data at scale. MongoDB Atlas is the cloud hosted service used for this application. 
 
 #### Database collections structure
 
