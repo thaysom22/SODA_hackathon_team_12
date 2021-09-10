@@ -80,9 +80,9 @@ note:
 * include age, gender, job_title fields?
 
 
-##### Points of interest collection
+##### Workspace considerations collection
 
-Collection name: disability_categories
+Collection name: workspace_considerations
 
 | Title | Key in DB | Validation | Data Type | Details |
 | --- | --- | --- | --- | --- |
@@ -101,7 +101,7 @@ Collection name: provisions
 | Name | name | `text`, `maxlength=50`, `required` | `String` | not null |
 | Short Description | short_desc | `textarea`, `maxlength=500`, `required` | `String` | not null |
 | Long Description | long_desc | `textarea`, `maxlength=5000`, `required` | `String` | not null |
-| Point of interest | poi | None | `ObjectId` | ref: > provisions._id, not null |
+| Workspace consideration | ws_consideration | None | `ObjectId` | ref: > provisions._id, not null |
 
 [Back to Top](#table-of-contents)
 
