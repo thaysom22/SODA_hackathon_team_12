@@ -70,36 +70,25 @@ Collection name: employees
 | Title | Key in DB | Validation | Data Type | Details |
 | --- | --- | --- | --- | --- |
 | ID | _id | None | `ObjectId` | Primary Key, unique, not null |
-| First Name | employee_first_name | `text`, `maxlength=100`, `required` | `String` | not null  |
-| Last Name | employee_last_name | `text`, `maxlength=100`, `required` | `String` | not null  |
-| Disabilities IDs | employee_disabilities_ids | None | `Array` | Array of ObjectIds ref: > disabilities._id |
-| Provisions IDs | employee_provisions_ids | None | `Array` | Array of ObjectIds ref: > provisions._id |
+| First Name | first_name | `text`, `maxlength=100`, `required` | `String` | not null  |
+| Last Name | last_name | `text`, `maxlength=100`, `required` | `String` | not null  |
+| Provisions IDs | provisions_ids | None | `Array` | Array of ObjectIds ref: > provisions._id |
+| Other Information | other_info | `textarea`, `max_length=5000` | `String` | |
 
 note: 
 * use a different key other than default ObjectId for employee id? 
 * include age, gender, job_title fields?
 
 
-##### Disability category collection
+##### Points of interest collection
 
 Collection name: disability_categories
 
 | Title | Key in DB | Validation | Data Type | Details |
 | --- | --- | --- | --- | --- |
 | ID | _id | None | `ObjectId` | Primary Key, unique, not null |
-| Name | disability_category_name | `text`, `maxlength=100`, `required` | `String` | not null, unique |
-
-
-##### Disabilities collection
-
-Collection name: disabilities
-
-| Title | Key in DB | Validation | Data Type | Details |
-| --- | --- | --- | --- | --- |
-| ID | _id | None | `ObjectId` | Primary Key, unique, not null |
-| Name | disability_name | text, `maxlength=100`, `required` | `String` | not null, unique |
-| Category ID | disability_category_id | None | `ObjectId` | ref: > disability_types._id |
-| Provisions IDs | disability_provisions_ids | None | `Array` | Array of ObjectIds ref: > provisions._id |
+| Name | name | `text`, `maxlength=100`, `required` | `String` | not null, unique |
+| Description | desc | `textarea`, `maxlength=500`, `required` | string | not null |
 
 
 ##### Provisions collection
@@ -109,22 +98,33 @@ Collection name: provisions
 | Title | Key in DB | Validation | Data Type | Details |
 | --- | --- | --- | --- | --- |
 | ID | _id | None | ObjectId | Primary Key, unique, not null |
-| Name | provision_name | text, `maxlength=50`, `required` | string | not null |
-| Description | provision_description | `maxlength=5000`, `required` | string | not null  |
-
+| Name | name | `text`, `maxlength=50`, `required` | `String` | not null |
+| Short Description | short_desc | `textarea`, `maxlength=500`, `required` | `String` | not null |
+| Long Description | long_desc | `textarea`, `maxlength=5000`, `required` | `String` | not null |
+| Point of interest | poi | None | `ObjectId` | ref: > provisions._id, not null |
 
 [Back to Top](#table-of-contents)
+
 ## 4. Technologies Used
+
+#### Languages
 
 * HTML, 
 * CSS, 
 * JavaScript, 
 * Python,
 
-#### Libraries, frameworks, tools used
+
+#### Libraries, frameworks, tools
+
 * Flask,
+* Bootstrap
+* jQuery
+* pyMongo
+
 
 [Back to Top](#table-of-contents)
+
 ## 5. Testing
 
 #### User Stories
