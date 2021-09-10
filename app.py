@@ -49,3 +49,16 @@ def submit():
     """
     return "<p>Submit success goes here</p>"
 
+
+# Temporary test route to generate a user session
+@app.route("/test_user")
+def test_user():
+    session["user"] = {"firstname": "test", "lastname": "test"}
+    return redirect(url_for("home"))
+
+@app.route("/show_test_user")
+def show_test_user():
+    if session.get("user") is None:
+        return "No test user defined"
+    
+    return f"<p>User = {session['user']['firstname']} {session['user']['lastname']}</p>"
