@@ -37,3 +37,8 @@ Links for design
 3. [build own virtual assistant](https://youtube.com/watch?v=AWvsXxDtEkU&feature=share)
 4. [fonts](https://www.shutterstock.com/blog/top-free-fonts-designers)
 5. [color palettes](https://www.shutterstock.com/blog/pastel-color-palettes-rococo-trend?customer_ID=356331[…]sletter_2019-05-23&launch_ID=18556185&utm_source=sstkemail)
+
+
+## Google sheets for database population
+
+[Link to sheets](https://docs.google.com/spreadsheets/d/1Ue718UIFDrad98E6W4-87uTzHNbzUGutEetPi7uc1v0/edit?usp=sharing) 
