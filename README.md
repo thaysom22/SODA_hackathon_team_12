@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # SODA_hackathon_team_12 project README
 ## Table of Contents
 
@@ -52,9 +51,7 @@ As a potential visitor (first time visitor) I would like to:
 ### Design and colors
 
 ### Wireframes
-1. Home Page Wireframe
-
-![View](wireframes/wireframes.jpg)
+[View Figma File](https://www.figma.com/file/AXzOgQx0EmB36cpDxdPCT4/Wireframes)
 
 ### Features
 #### Global
@@ -144,7 +141,7 @@ Collection name: provisions
 
 ### Responsiveness (add report from am I responsible?)
 
-### Ligthouse Report
+### Lighthouse Report
 
 ### Knowns Bugs
 
