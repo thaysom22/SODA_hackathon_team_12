@@ -30,3 +30,22 @@ def home():
     return "<p>Home page goes here</p>"
 
 
+
+
+@app.route("/get_data")
+@requires_user
+def get_data(dataid):
+    """
+    Returns the requested data from the database
+    """
+    return None
+
+
+@app.route("/submit", methods=["GET", "POST"])
+@requires_user
+def submit():
+    """
+    Submits the user's selections
+    """
+    return "<p>Submit success goes here</p>"
+
