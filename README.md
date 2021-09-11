@@ -82,7 +82,7 @@ note:
 
 ##### Workspace considerations collection
 
-Collection name: workspace_considerations
+Collection name: ws_considerations
 
 | Title | Key in DB | Validation | Data Type | Details |
 | --- | --- | --- | --- | --- |
