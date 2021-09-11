@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% set active_page = "index" %}
+
+{% block head %}{{ page_title }}{% endblock %}
+
+{% block content %}
+
+<div class="container text-center">
+  <h1 class="mt-5">Welcome!</h1>
+  <form class="" action="/user" method="post">
+    <div class="mb-3">
+      <label for="firstname">First name:</label>
+      <input type="text" name="firstname" value="">
+      <label for="lastname">Last name:</label>
+      <input type="text" name="lastname" value="">
+      <input type="submit" name="submit" value="Submit">
+    </div>
+  </form>
+</div>
+
+{% endblock %}

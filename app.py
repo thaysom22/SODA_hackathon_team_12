@@ -1,8 +1,7 @@
 import os
 from functools import wraps
 
-from flask import (Flask, redirect, 
-    render_template, url_for, session)
+from flask import (Flask, redirect, request, render_template, url_for, session)
 from flask_pymongo import PyMongo
 
 
@@ -12,7 +11,6 @@ app.secret_key = os.environ.get("SECRET_KEY")
 app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
 app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 # 'main' database is exposed as mongo.db
-
 mongo = PyMongo(app)
 
 debugging = "DEBUG" in os.environ
@@ -34,7 +32,7 @@ def requires_user(func):
 
 
 @app.route("/")
-# @requires_user - uncomment once /user route is implemented
+@requires_user
 def home():
     """
     Shows the home page/default route and main app page
@@ -69,22 +67,26 @@ def faq():
     return render_template("faq.html", page_title="FAQ")
 
 
-@app.route("/user")
+@app.route("/user", methods=["GET", "POST"])
 def user():
     """
     User log in page
     Landing page for users not in session
     """
-    return "<p>User log in goes here</p>"
+    if request.method == 'POST':
+        # Ensure firstname provided, but allow lastname to be blank.
+        # We don't want to discriminate against Madonna
+        if "firstname" in request.form and request.form["firstname"]:
+            session["user"] = {
+                "firstname": request.form["firstname"],
+                "lastname": None
+            }
+            if "lastname" in request.form:
+                session["user"]["lastname"] = request.form["lastname"]
 
+            return redirect(url_for("home"))
 
-@app.route("/get_data")
-@requires_user
-def get_data(dataid):
-    """
-    Returns the requested data from the database
-    """
-    return None
+    return render_template("user.html", page_title="Welcome")
 
 
 @app.route("/submit", methods=["GET", "POST"])
@@ -94,21 +96,6 @@ def submit():
     Submits the user's selections
     """
     return "<p>Submit success goes here</p>"
-
-
-# Temporary test route to generate a user session
-@app.route("/test_user")
-def test_user():
-    session["user"] = {"firstname": "test", "lastname": "test"}
-    return redirect(url_for("home"))
-
-
-@app.route("/show_test_user")
-def show_test_user():
-    if session.get("user") is None:
-        return "No test user defined"
-
-    return f"<p>User = {session['user']['firstname']} {session['user']['lastname']}</p>"
 
 
 if __name__ == "__main__":
