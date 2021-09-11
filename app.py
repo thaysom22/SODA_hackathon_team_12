@@ -75,16 +75,6 @@ def user():
     User log in page
     Landing page for users not in session
     """
-    return "<p>User log in goes here</p>"
-
-
-@app.route("/get_data")
-@requires_user
-def get_data(dataid):
-    """
-    Returns the requested data from the database
-    """
-    return None
 
 
 @app.route("/submit", methods=["GET", "POST"])
@@ -94,21 +84,6 @@ def submit():
     Submits the user's selections
     """
     return "<p>Submit success goes here</p>"
-
-
-# Temporary test route to generate a user session
-@app.route("/test_user")
-def test_user():
-    session["user"] = {"firstname": "test", "lastname": "test"}
-    return redirect(url_for("home"))
-
-
-@app.route("/show_test_user")
-def show_test_user():
-    if session.get("user") is None:
-        return "No test user defined"
-
-    return f"<p>User = {session['user']['firstname']} {session['user']['lastname']}</p>"
 
 
 if __name__ == "__main__":
