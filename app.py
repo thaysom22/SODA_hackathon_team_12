@@ -1,7 +1,7 @@
 import os
 
 from functools import wraps
-from flask import (Flask, redirect, url_for, session)
+from flask import (Flask, render_template, redirect, url_for, session)
 
 app = Flask(__name__)
 app.secret_key = os.environ.get("SECRET_KEY")
@@ -23,12 +23,28 @@ def requires_user(func):
 
 
 @app.route("/")
-@requires_user
+# @requires_user - uncomment once /user route is implemented
 def home():
     """
     Shows the home page
     """
-    return "<p>Home page goes here</p>"
+    return render_template("index.html", page_title="Home")
+
+
+@app.route('/about')
+def about():
+    """
+    About Page
+    """
+    return render_template("about.html", page_title="About")
+
+
+@app.route('/faq')
+def faq():
+    """
+    FAQ Page
+    """
+    return render_template("faq.html", page_title="FAQ")
 
 
 @app.route("/user")
@@ -63,9 +79,14 @@ def test_user():
     session["user"] = {"firstname": "test", "lastname": "test"}
     return redirect(url_for("home"))
 
+
 @app.route("/show_test_user")
 def show_test_user():
     if session.get("user") is None:
         return "No test user defined"
-    
+
     return f"<p>User = {session['user']['firstname']} {session['user']['lastname']}</p>"
+
+
+if __name__ == "__main__":
+    app.run(debug=True)  # Change to false in production

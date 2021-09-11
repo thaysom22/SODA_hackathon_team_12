@@ -1,0 +1,7 @@
+:root {
+  --bs-primary: #001f3f;
+}
+
+main > .container {
+  padding: 4rem 2rem 0;
+}
