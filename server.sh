@@ -1,8 +1,7 @@
-export FLASK_APP=app
-export FLASK_ENV=development
+#!/bin/bash
 
-set -o allexport
-source ./.env
-set +o allexport
+while read a; do
+    export $a
+done <.env
 
 flask run
