@@ -12,6 +12,7 @@ app.secret_key = os.environ.get("SECRET_KEY")
 app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
 app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 # 'main' database is exposed as mongo.db
+
 mongo = PyMongo(app)
 
 debugging = "DEBUG" in os.environ
@@ -46,10 +47,9 @@ def home():
     )
 
     return render_template(
-        "templates/index.html",
+        "index.html",
         all_ws_considerations=all_ws_considerations
     )
-    return render_template("index.html", page_title="Home")
 
 
 @app.route('/about')
