@@ -9,6 +9,8 @@ app.secret_key = os.environ.get("SECRET_KEY")
 app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
 app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 
+debugging = "DEBUG" in os.environ
+
 
 def requires_user(func):
     """
@@ -29,7 +31,7 @@ def requires_user(func):
 # @requires_user - uncomment once /user route is implemented
 def home():
     """
-    Shows the home page
+    Shows the home page/default route and main app page
     """
     return render_template("index.html", page_title="Home")
 
@@ -92,4 +94,4 @@ def show_test_user():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)  # Change to false in production
+    app.run(debug=debugging)
