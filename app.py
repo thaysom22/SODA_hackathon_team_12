@@ -48,6 +48,7 @@ def home():
 
     return render_template(
         "index.html",
+        page_title="Home",
         all_ws_considerations=all_ws_considerations
     )
 
