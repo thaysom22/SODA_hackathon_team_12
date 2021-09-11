@@ -32,7 +32,7 @@ def requires_user(func):
 
 
 @app.route("/")
-# @requires_user - uncomment once /user route is implemented
+@requires_user
 def home():
     """
     Shows the home page/default route and main app page
