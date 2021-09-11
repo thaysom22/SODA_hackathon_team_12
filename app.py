@@ -1,8 +1,7 @@
 import os
 from functools import wraps
 
-from flask import (Flask, redirect, 
-    render_template, url_for, session)
+from flask import (Flask, redirect, request, render_template, url_for, session)
 from flask_pymongo import PyMongo
 
 
@@ -12,7 +11,6 @@ app.secret_key = os.environ.get("SECRET_KEY")
 app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
 app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 # 'main' database is exposed as mongo.db
-
 mongo = PyMongo(app)
 
 debugging = "DEBUG" in os.environ
@@ -69,12 +67,26 @@ def faq():
     return render_template("faq.html", page_title="FAQ")
 
 
-@app.route("/user")
+@app.route("/user", methods=["GET", "POST"])
 def user():
     """
     User log in page
     Landing page for users not in session
     """
+    if request.method == 'POST':
+        # Ensure firstname provided, but allow lastname to be blank.
+        # We don't want to discriminate against Madonna
+        if "firstname" in request.form and request.form["firstname"]:
+            session["user"] = {
+                "firstname": request.form["firstname"],
+                "lastname": None
+            }
+            if "lastname" in request.form:
+                session["user"]["lastname"] = request.form["lastname"]
+
+            return redirect(url_for("home"))
+
+    return render_template("user.html", page_title="Welcome")
 
 
 @app.route("/submit", methods=["GET", "POST"])
