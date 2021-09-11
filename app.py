@@ -66,6 +66,7 @@ def test_user():
     session["user"] = {"firstname": "test", "lastname": "test"}
     return redirect(url_for("home"))
 
+
 @app.route("/show_test_user")
 def show_test_user():
     if session.get("user") is None:
