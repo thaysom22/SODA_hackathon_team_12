@@ -1,13 +1,18 @@
 import os
-
 from functools import wraps
-from flask import (Flask, redirect, url_for, session)
+
+from flask import (Flask, redirect, 
+    render_template, url_for, session)
+from flask_pymongo import PyMongo
 
 
 app = Flask(__name__)
 app.secret_key = os.environ.get("SECRET_KEY")
+# connect app as mongodb client
 app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
 app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
+# 'main' database is exposed as mongo.db
+mongo = PyMongo(app)
 
 
 def requires_user(func):
@@ -30,14 +35,25 @@ def requires_user(func):
 def home():
     """
     Shows the home page
+    Loads all provisions from mongodb collection
     """
-    return "<p>Home page goes here</p>"
+
+    # read all workspace considerations with associated provisions into list
+    all_ws_considerations = list(
+        mongo.db.ws_considerations.find()
+    )
+
+    return render_template(
+        "templates/index.html",
+        all_ws_considerations=all_ws_considerations
+    )
 
 
 @app.route("/user")
 def user():
     """
     User log in page
+    Landing page for users not in session
     """
     return "<p>User log in goes here</p>"
 
