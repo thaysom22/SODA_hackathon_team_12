@@ -7,8 +7,10 @@ __pycache__/
 *.py[cod]
 node_modules/
 .github/
+.vscode
 
 # Python virtual environment ignores
+.venv
 bin/
 include/
 lib/

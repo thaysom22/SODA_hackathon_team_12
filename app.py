@@ -31,7 +31,7 @@ def requires_user(func):
 
 
 @app.route("/")
-@requires_user
+# @requires_user - uncomment once /user route is implemented
 def home():
     """
     Shows the home page
@@ -47,6 +47,23 @@ def home():
         "templates/index.html",
         all_ws_considerations=all_ws_considerations
     )
+    return render_template("index.html", page_title="Home")
+
+
+@app.route('/about')
+def about():
+    """
+    About Page
+    """
+    return render_template("about.html", page_title="About")
+
+
+@app.route('/faq')
+def faq():
+    """
+    FAQ Page
+    """
+    return render_template("faq.html", page_title="FAQ")
 
 
 @app.route("/user")
@@ -87,5 +104,9 @@ def test_user():
 def show_test_user():
     if session.get("user") is None:
         return "No test user defined"
-    
+
     return f"<p>User = {session['user']['firstname']} {session['user']['lastname']}</p>"
+
+
+if __name__ == "__main__":
+    app.run(debug=True)  # Change to false in production
