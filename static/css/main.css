@@ -1,10 +1,25 @@
 :root {
   --bs-primary: #001f3f;
+  --bs-green: #57b894;
 }
 
 .content-wrapper {
   padding-top: 4rem;
   max-width: 800px;
+}
+
+.logo-text {
+  font-weight: 500;
+  text-decoration: underline;
+  text-decoration-color: var(--bs-green);
+}
+
+.active {
+  font-weight: 500;
+}
+
+#hamburger {
+  stroke: var(--bs-primary);
 }
 
 /* About Page Styles */
