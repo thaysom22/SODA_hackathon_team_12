@@ -39,15 +39,23 @@ def home():
     Loads all provisions from mongodb collection
     """
 
-    # read all workspace considerations with associated provisions into list
-    all_ws_considerations = list(
-        mongo.db.ws_considerations.find()
-    )
+    # Performs an join like query to get all values of ws_considerations with
+    # Corrosponding provisions attached
+    considerations = list(mongo.db.ws_considerations.aggregate([
+        {
+            "$lookup" : {
+                "from" : "provisions",
+                "localField" : "_id",
+                "foreignField" : "ws_consideration",
+                "as" : "provisions"
+            }
+        }
+    ]))
 
     return render_template(
         "index.html",
         page_title="Home",
-        all_ws_considerations=all_ws_considerations
+        considerations=considerations
     )
 
 
