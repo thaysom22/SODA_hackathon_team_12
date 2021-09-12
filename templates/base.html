@@ -26,7 +26,7 @@
     <title>{% block head %}{% endblock %}</title>
   </head>
 
-  <body class="d-flex flex-column h-100">
+  <body class="d-flex flex-column h-100 align-items-center">
     <header>
       <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
         <div class="container-fluid justify-content-start gap-4">
@@ -72,7 +72,7 @@
 
     <main class="flex-shrink-0">{% block content %}{% endblock %}</main>
 
-    <footer class="footer mt-auto py-3 bg-light">
+    <footer class="container-fluid mt-auto py-3 bg-light">
       <div class="container">
         <span class="text-muted">Footer</span>
       </div>
