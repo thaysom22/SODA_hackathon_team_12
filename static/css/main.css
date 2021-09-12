@@ -35,3 +35,21 @@
     gap: 2rem;
   }
 }
+
+/* Home Page Styles */
+
+/* This css is what allows the inline svg to be responsive */
+.scaling-svg-container {
+  position: relative;
+  height: 0;
+  width: 100%;
+  padding-top: 66%; /* (svg height / svg width) * width-value; */
+}
+
+.scaling-svg {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+}

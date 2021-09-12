@@ -43,11 +43,11 @@ def home():
     # Corrosponding provisions attached
     considerations = list(mongo.db.ws_considerations.aggregate([
         {
-            "$lookup" : {
-                "from" : "provisions",
-                "localField" : "_id",
-                "foreignField" : "ws_consideration",
-                "as" : "provisions"
+            "$lookup": {
+                "from": "provisions",
+                "localField": "_id",
+                "foreignField": "ws_consideration",
+                "as": "provisions"
             }
         }
     ]))
@@ -55,7 +55,8 @@ def home():
     return render_template(
         "index.html",
         page_title="Home",
-        considerations=considerations
+        considerations=considerations,
+        fname=session["user"]["firstname"]
     )
 
 
