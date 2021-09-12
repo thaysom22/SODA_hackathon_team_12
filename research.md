@@ -44,8 +44,10 @@ Links for design
 [Link to sheets](https://docs.google.com/spreadsheets/d/1Ue718UIFDrad98E6W4-87uTzHNbzUGutEetPi7uc1v0/edit?usp=sharing) 
 
 ## Helpful resources:
-1. http://nda.ie/disability-overview/ - disability right Ireland
+1. http://nda.ie/disability-overview/ - Disability Right Ireland
 2. https://www.disabilityrightsuk.org/ - Disability Rights UK
+3. https://www.usa.gov/disability-rights - Disability Rights USA
+4. http://www.inclusion-europe.eu/european-commission-presents-strategy-for-the-rights-of-persons-with-disabilities-2021-2030/#:~:text=EU%20rights%3A%20Persons%20with%20disabilities,to%20participate%20in%20political%20life.&text=Independent%20living%20and%20autonomy%3A%20Persons,whom%20they%20want%20to%20live. - Disability Rights EU
 
 ## Tools for helping disabled workers:
 1. https://hcbsprovider.com/assistive-devices-and-tools-for-people-with-disabilities/#:~:text=
