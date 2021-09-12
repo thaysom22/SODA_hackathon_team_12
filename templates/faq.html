@@ -5,8 +5,72 @@
 
 {% block content %}
 
-<div class="content-wrapper text-center">
-  <h1 class="mt-5">{{ page_title }}</h1>
+<div class="content-wrapper px-5">
+  <section>
+    <h1 class="mt-5 text-center">Frequently Asked Questions 📖</h1>
+
+    <p class="lead">
+      The function of this tool is to empower any disabled person to gain more control and
+      understanding of what their rights are as employees in the modern workforce as well as to allow employers to equip themselves with the necessary tools to support disabled employees.
+    </p>
+
+    <p class="lead">
+      Each workplace can vary in terms of the location and accessibility however we want to help and empower employers to create an equal opportunity workplace for all staff.
+    </p>
+  </section>
+
+  <h2 class="h4">Top questions:</h2>
+  <div class="accordion mb-4" id="faq-accordion">
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="questionOne">
+        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          What does Workability do?
+        </button>
+      </h2>
+      <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="questionOne" data-bs-parent="#faq-accordion">
+        <div class="accordion-body">
+          Workability is a platform that empowers disabled employees to work more efficiently by helping employers create a truly accessible workplace. Working in an environment that is inclusive and more accessible benefits everyone, not just disabled employees or visitors!
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="questionTwo">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          Who is it for?
+        </button>
+      </h2>
+      <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="questionTwo" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          Workability is a platform and tool that can be used by anyone with accessibility needs in the workplace. For now we have focused on these 4 main categories of disabilites: Vision, Mobility, Auditory and Cognitive impairments, with more recommendations to be added in as the project grows!
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="questionThree">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          If I have a disability that is not mentioned, can I still get help?
+        </button>
+      </h2>
+      <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="questionThree" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <strong>Yes!</strong> We want to engage and help people from all walks of life regardless of their disabilities. If your disability has not been addressed then please let us know in the 'Other' text field and we will do our best to help!
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="questionFour">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+          Is an employer liable to help with transport to and from a workplace
+        </button>
+      </h2>
+      <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="questionFour" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          No, however the employer must accommodate any and all disabled staff members to have
+          access to all facilities both in the work environment as well as accessing the workplace. Example: Disabled Parking.
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 {% endblock %}
