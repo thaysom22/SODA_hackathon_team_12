@@ -18,7 +18,7 @@ debugging = "DEBUG" in os.environ
 
 def requires_user(func):
     """
-    Redirects wrapped route to user log in if no user in session.
+    Redirects wrapped route to user definition if no user in session.
     """
     @wraps(func)
     def route(*args, **kwargs):
