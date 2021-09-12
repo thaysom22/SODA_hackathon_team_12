@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% set active_page = "index" %}
+{% set active_page = "home" %}
 
 {% block head %}{{ page_title }}{% endblock %}
 
@@ -11,6 +11,14 @@
     Get recommendations based on your needs to help you be more productive in
     the workplace.
   </p>
+
+  {# Temp data dump for database testing #}
+  {% for consideration in considerations %}
+    <h3>{{ consideration.name }}</h3>
+    {% for provision in consideration.provisions %}
+      <p>{{ provision.name }}</p>
+    {% endfor %}
+  {% endfor %}
 </div>
 
 {% endblock %}

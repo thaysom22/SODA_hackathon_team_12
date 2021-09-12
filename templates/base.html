@@ -1,10 +1,10 @@
 {% set navigation_bar = [
-  ('/', 'index', 'Index'),
+  ('/', 'home', 'Home'),
   ('/about', 'about', 'About'),
   ('/faq', 'faq', 'FAQ')
 ] -%}
 
-{% set active_page = active_page|default('index') -%}
+{% set active_page = active_page|default('home') -%}
 
 <!DOCTYPE html>
 <html lang="en" class="h-100">
@@ -39,7 +39,7 @@
           >
             <span class="navbar-toggler-icon"></span>
           </button>
-          <a class="navbar-brand" href="#">Logo</a>
+          <a class="navbar-brand" href="/">Logo</a>
           <div
             class="offcanvas offcanvas-start bg-dark"
             tabindex="-1"

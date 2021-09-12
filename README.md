@@ -31,7 +31,7 @@
 ##  2. User Experience
 User experience is one of the most significant things when building a webpage. To do this properly, you should consider:
 * who is your target audience,
-* what they want to achieve by visiting your page, 
+* what they want to achieve by visiting your page,
 * which features will meet their expectations.
 
 In this case, potential customers are:
@@ -59,7 +59,7 @@ As a potential visitor (first time visitor) I would like to:
 ### Information Architecture
 #### Database choice
 
-[MongoDB]() is a NoSQL, document-based database which groups data as key-value pairs within documents grouped into collections. MongoDB excels at storing and providing access to unstructured data at scale. MongoDB Atlas is the cloud hosted service used for this application. 
+[MongoDB]() is a NoSQL, document-based database which groups data as key-value pairs within documents grouped into collections. MongoDB excels at storing and providing access to unstructured data at scale. MongoDB Atlas is the cloud hosted service used for this application.
 
 #### Database collections structure
 
@@ -75,8 +75,8 @@ Collection name: employees
 | Provisions IDs | provisions_ids | None | `Array` | Array of ObjectIds ref: > provisions._id |
 | Other Information | other_info | `textarea`, `max_length=5000` | `String` | |
 
-note: 
-* use a different key other than default ObjectId for employee id? 
+note:
+* use a different key other than default ObjectId for employee id?
 * include age, gender, job_title fields?
 
 
@@ -101,7 +101,7 @@ Collection name: provisions
 | Name | name | `text`, `maxlength=50`, `required` | `String` | not null |
 | Short Description | short_desc | `textarea`, `maxlength=500`, `required` | `String` | not null |
 | Long Description | long_desc | `textarea`, `maxlength=5000`, `required` | `String` | not null |
-| Workspace consideration | ws_consideration | None | `ObjectId` | ref: > provisions._id, not null |
+| Workspace consideration | ws_consideration | None | `ObjectId` | ref: > ws_considerations._id, not null |
 
 [Back to Top](#table-of-contents)
 
@@ -109,9 +109,9 @@ Collection name: provisions
 
 #### Languages
 
-* HTML, 
-* CSS, 
-* JavaScript, 
+* HTML,
+* CSS,
+* JavaScript,
 * Python,
 
 
@@ -134,8 +134,8 @@ Collection name: provisions
 | --- |:----------------|:--------------| :-----: |
 
 ### Browser Compatibility
-* Google Chrome 
-* Firefox 
+* Google Chrome
+* Firefox
 * Edge
 * Safari
 
