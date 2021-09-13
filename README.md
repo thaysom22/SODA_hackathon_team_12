@@ -27,7 +27,7 @@
 
 ## 1. Introduction
 
-![Workability (https://github.com/[thaysom22]/[SODA_hackathon_team_12]/blob/[main]/image.jpg?raw=true)
+![Workability (image.jpg?raw=true)
 
 [Back to Top](#table-of-contents)
 ##  2. User Experience
