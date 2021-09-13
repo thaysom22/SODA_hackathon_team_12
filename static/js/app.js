@@ -61,9 +61,9 @@ function adjustProvisionList(title, description, id, add) {
       const container = document.createElement("div");
       container.classList = "container text-start";
       container.id = `submit-${id}`;
-      const item = document.createElement("div");
+      const item = document.createElement("li");
       item.innerHTML = `
-      <dl class="row ">
+      <dl class="row mb-0">
         <dt class="col-sm-3">${title}</dt>
         <dd class="col-sm-9">${description}</dd>
       </dl>
@@ -74,9 +74,26 @@ function adjustProvisionList(title, description, id, add) {
       itemData.type = "hidden";
       itemData.value = id;
       item.appendChild(itemData);
+      // create delete button
+      const deleteContainer = document.createElement("div");
+      deleteContainer.classList = "container text-center py-2";
+      const itemDelete = document.createElement("button");
+      deleteContainer.appendChild(itemDelete);
+      itemDelete.classList = "btn btn-outline-danger";
+      itemDelete.innerText = "Remove";
+      itemDelete.addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        // uncheck checkbox element in accordian for deleted provision
+        const checkboxElem = document.getElementById(id);
+        checkboxElem.checked = false;
+        // remove parent li element
+        adjustProvisionList(null, null, id, false);
+      });
       // Append to list
       provisionList.appendChild(container);
       container.appendChild(item);
+      container.appendChild(deleteContainer);
     }
   } else {
     // Remove item if unchecked
