@@ -1,10 +1,38 @@
 :root {
   --bs-primary: #001f3f;
+  --bs-green: #57b894;
 }
 
 .content-wrapper {
   padding-top: 4rem;
   max-width: 800px;
+}
+
+.logo-text {
+  font-weight: 500;
+  text-decoration: underline;
+  text-decoration-color: var(--bs-green);
+}
+
+.active {
+  font-weight: 500;
+}
+
+.input-group {
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.input-group > .form-control {
+  width: 100%;
+}
+
+#hamburger {
+  stroke: var(--bs-primary);
+}
+
+:focus {
+  outline: var(--bs-primary) auto;
 }
 
 /* About Page Styles */
@@ -13,10 +41,138 @@
   max-width: 75%;
 }
 
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+  .input-group {
+    flex-direction: row;
+    gap: 0;
+  }
+
+  .input-group > .form-control {
+    width: 1%;
+  }
+}
+
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) {
   .collapse-row {
     flex-direction: row !important;
     gap: 2rem;
+  }
+}
+
+/* Home Page Styles */
+
+/* This css is what allows the inline svg to be responsive */
+.scaling-svg-container {
+  position: relative;
+  height: 0;
+  width: 100%;
+  padding-top: 66%; /* (svg height / svg width) * width-value; */
+  margin-bottom: 8rem;
+}
+
+.scaling-svg {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+}
+
+#desk-node,
+#input-node,
+#device-node {
+  transition: ease;
+  transition-duration: 0.2s;
+}
+
+#desk-node:hover,
+#input-node:hover,
+#device-node:hover {
+  cursor: pointer;
+}
+
+#desk-node,
+#device-node {
+  r: 7;
+}
+
+#desk-node:hover,
+#desk-node:focus,
+#desk-node-active,
+#device-node:hover,
+#device-node:focus,
+#device-node:active {
+  r: 10;
+}
+
+#input-node {
+  r: 5;
+}
+
+#input-node:hover,
+#input-node:focus,
+#input-node:active {
+  r: 8;
+}
+
+@media (prefers-reduced-motion) {
+  #desk-node,
+  #input-node,
+  #device-node {
+    transition: none;
+  }
+}
+
+/* Popover Styles */
+.popover {
+  max-width: none;
+  width: 288px;
+}
+
+.popover-header,
+.popover-subheader,
+.popover-body,
+.popover-accordion > .accordion-item > h4 > .accordion-button {
+  background-color: var(--bs-primary);
+  color: white;
+}
+
+.popover-header {
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.popover-subheader {
+  padding: 0 1rem;
+}
+
+.popover-body {
+  padding: 0;
+}
+
+.popover-accordion {
+  padding-bottom: 0.5rem;
+}
+
+.popover-accordion > .accordion-item {
+  background-color: var(--bs-primary);
+}
+
+.popover-accordion > .accordion-item > h4 > .accordion-button,
+.popover-accordion > .accordion-item > h4 > .accordion-body {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.popover-accordion > .accordion-item > h4 > .accordion-button::after {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23fff'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+  .popover {
+    width: 420px;
   }
 }

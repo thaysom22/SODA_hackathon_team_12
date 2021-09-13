@@ -44,43 +44,43 @@ def home():
     """
 
     # Performs an join like query to get all values of ws_considerations with
-    # corresponding provisions attached 
+    # corresponding provisions attached
     # $unwind provision_categories array to create document copy for each element in array
     # $lookup accepts Array type as localField and performs overwrite
     # $group recreates original document structure with provision_categories as an array
     # $first takes value of 'name', 'desc' and 'ui_location' fields from first document in each group
     considerations_data = list(mongo.db.ws_considerations.aggregate([
         {
-            "$unwind" : {
-                "path" : "$provision_categories"
+            "$unwind": {
+                "path": "$provision_categories"
             }
         },
         {
-            "$lookup" : {
-                "from" : "provisions",
-                "localField" : "provision_categories.provisions",
-                "foreignField" : "_id",
-                "as" : "provision_categories.provisions"
+            "$lookup": {
+                "from": "provisions",
+                "localField": "provision_categories.provisions",
+                "foreignField": "_id",
+                "as": "provision_categories.provisions"
             }
         },
         {
-            "$group" : {
-                "_id" : "$_id",
-                "name": { "$first": "$name" },
-                "desc": { "$first": "$desc" },
-                "ui_location": { "$first": "$ui_location" },
-                "provision_categories" : {
-                    "$push" : "$provision_categories"
+            "$group": {
+                "_id": "$_id",
+                "name": {"$first": "$name"},
+                "desc": {"$first": "$desc"},
+                "ui_location": {"$first": "$ui_location"},
+                "provision_categories": {
+                    "$push": "$provision_categories"
                 }
             }
         }
     ]))
 
-
     return render_template(
         "index.html",
         page_title="Home",
-        considerations_data=considerations_data
+        considerations=considerations_data,
+        fname=session["user"]["firstname"]
     )
 
 
@@ -108,7 +108,7 @@ def user():
     """
     if request.method == 'POST':
         # Ensure firstname provided, but allow lastname to be blank.
-        # We don't want to discriminate against Madonna
+        # We don't want to discriminate against Madonna :)
         if "firstname" in request.form and request.form["firstname"]:
             session["user"] = {
                 "firstname": request.form["firstname"],
@@ -126,12 +126,31 @@ def user():
 @requires_user
 def submit():
     """
-    Submits the user's selections
+    POST: Receives the user's selections, 
+    associates with session user and adds to database
+    GET: displays summary for user's' selections
     """
-    return "<p>Submit success goes here</p>"
+
+    
+
+    # if request.method == "POST":
+        # clean and validate data sent from client
+        
+        # associate provisions with user in session
+        # attempt to insert document into employees collection
+        # if successful, redirect to 'submit/' 
+        # with ObjectId of inserted document as url parameter
+
+    # GET
+    # try to lookup by employee_id in database
+    # display success message and provisions or redirectto 'user/'  
+
+    return render_template(
+        "submit.html", page_title="Submit"
+    )
 
 
 if __name__ == "__main__":
     app.run(debug=debugging,
-        host=os.environ.get("IP"),
-        port=int(os.environ.get("PORT")))
+            host=os.environ.get("IP"),
+            port=int(os.environ.get("PORT")))

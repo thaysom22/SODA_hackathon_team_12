@@ -5,17 +5,35 @@
 
 {% block content %}
 
-<div class="content-wrapper text-center">
-  <h1 class="mt-5">Welcome!</h1>
-  <form class="" action="/user" method="post">
-    <div class="mb-3">
-      <label for="firstname">First name:</label>
-      <input type="text" name="firstname" value="">
-      <label for="lastname">Last name:</label>
-      <input type="text" name="lastname" value="">
-      <input type="submit" name="submit" value="Submit">
-    </div>
-  </form>
+<div class="content-wrapper pt-0">
+  <div class="px-4 py-5 mt-5 text-center">
+    <img class="d-block mx-auto mb-1" src="{{ url_for('static', filename='assets/logo.svg') }}" alt="Workability logo" width="128" height="128">
+    <h1 class="display-5 logo-text mb-4">Workability</h1>
+    <p class="lead mb-4">
+      Get recommendations based on your needs to help you be more productive in the workplace.
+    </p>
+  
+    <h2 class="mb-4">Get started here:</h2>
+    <form class="" action="/user" method="post">
+      <div class="mb-3">
+  
+        <div class="input-group">
+          <span class="input-group-text">First and last name</span>
+          <input type="text" name="firstname" aria-label="First name" class="form-control">
+          <input type="text" name="lastname" aria-label="Last name" class="form-control">
+          <button class="btn btn-outline-secondary" type="submit" name="submit" value="Submit" >Let's go!</button>
+        </div>
+      </div>
+    </form>
+
+    <img class="my-4" src="{{ url_for('static', filename='assets/shared-workspace.svg') }}" alt="Two people using laptops" style="max-width: 420px;">
+  
+    <p class="lead mb-4">
+      There are many types of disabilities and not all of them are visible. As employers we need to consider how we can accommodate disabled employees and empower them to be productive whether they are in the office or working from home.
+    </p>
+
+  </div>
+
 </div>
 
 {% endblock %}
