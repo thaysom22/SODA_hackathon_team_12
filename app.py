@@ -3,6 +3,7 @@ from functools import wraps
 
 from flask import (Flask, redirect, request, render_template, url_for, session)
 from flask_pymongo import PyMongo
+from bson import ObjectId
 
 # ./server.sh not working for me on gitpod
 if os.path.exists("env.py"):
@@ -126,24 +127,33 @@ def user():
 @requires_user
 def submit():
     """
-    POST: Receives the user's selections, 
+    POST: Receives the user's selections,
     associates with session user and adds to database
     GET: displays summary for user's' selections
     """
 
-    
 
-    # if request.method == "POST":
+
+    if request.method == "POST":
+        provisions = request.form.getlist("provisions")
         # clean and validate data sent from client
-        
-        # associate provisions with user in session
-        # attempt to insert document into employees collection
-        # if successful, redirect to 'submit/' 
-        # with ObjectId of inserted document as url parameter
+        if provisions:
+            # Create new record
+            provisions = list(map(lambda i:ObjectId(i), provisions))
+            employee = {
+                "first_name": session["user"]["firstname"],
+                "last_name": session["user"]["lastname"],
+                "provisions_ids": provisions,
+                "other_info": None
+            }
+            # attempt to insert document into employees collection
+            mongo.db.employees.insert_one(employee)
+            # if successful, redirect to 'submit/'
+            # with ObjectId of inserted document as url parameter
 
     # GET
     # try to lookup by employee_id in database
-    # display success message and provisions or redirectto 'user/'  
+    # display success message and provisions or redirectto 'user/'
 
     return render_template(
         "submit.html", page_title="Submit"
