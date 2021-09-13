@@ -25,3 +25,10 @@ popoverList.forEach(function (popover) {
     popoverList.forEach((item) => {if (item != popover) item.hide();});
   });
 });
+
+// React to changes on provision checkboxes
+document.addEventListener('change', function(event) {
+  if (event.target.matches('.provision-item > input[type="checkbox"]')) {
+    console.log(event);
+  }
+});
