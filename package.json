@@ -1,0 +1,8 @@
+{
+  "name": "workability",
+  "version": "1.0.0",
+  "main": "app.js",
+  "devDependencies": {
+    "eslint": "^7.32.0"
+  }
+}
