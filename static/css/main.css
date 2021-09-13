@@ -84,3 +84,11 @@
 #input-node:hover {
   r: 8;
 }
+
+@media (prefers-reduced-motion) {
+  #desk-node,
+  #input-node,
+  #device-node {
+    transition: none;
+  }
+}
