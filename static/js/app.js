@@ -42,7 +42,7 @@ document.addEventListener('change', function(event) {
   }
 });
 
-// Adds or removes provision list items. TODO: Add a delete button to items.
+// Adds or removes provision list items.
 function adjustProvisionList(text, id, add) {
   const provisionList = document.getElementById("provisions-list");
   const provisionSubmit = document.getElementById("provision-form-submit");
@@ -60,7 +60,20 @@ function adjustProvisionList(text, id, add) {
       itemData.type = "hidden";
       itemData.value = id;
       item.appendChild(itemData);
-      // Append to list
+      // create delete button
+      const itemDelete = document.createElement("button");
+      itemDelete.innerText = "Remove";
+      itemDelete.addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        // uncheck checkbox element in accordian for deleted provision
+        const checkboxElem = document.getElementById(id);
+        checkboxElem.checked = false;
+        // remove parent li element
+        adjustProvisionList(null, id, false);  
+      });
+      item.appendChild(itemDelete);
+      // Append li element to ul
       provisionList.appendChild(item);
     }
   } else {
