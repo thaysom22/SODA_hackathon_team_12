@@ -13,12 +13,20 @@
   </p>
 
   {# Temp data dump for database testing #}
-  {% for consideration in considerations %}
+  {% for consideration in considerations_data %}
     <h3>{{ consideration.name }}</h3>
-    {% for provision in consideration.provisions %}
-      <p>{{ provision.name }}</p>
+    <p>{{ consideration.desc }}</p>
+    <small>{{ consideration.ui_location }}</small>
+    {% for provision_category in consideration.provision_categories %}
+      <h5>{{ provision_category.name }}</h5>
+      <p>{{ provision_category.desc }}</p>
+      {% for provision in provision_category.provisions %}
+        <strong>{{ provision.name }}</strong>
+        <p>{{ provision.desc }}</p>
+      {% endfor %}
     {% endfor %}
   {% endfor %}
+
 </div>
 
 {% endblock %}
