@@ -145,14 +145,21 @@ def submit(user_id=None):
                 "provisions_ids": provisions,
                 "other_info": None
             }
-            # attempt to insert document into employees collection
-            mongo.db.employees.insert_one(employee)
-            # if successful, redirect to 'submit/'
-            # with ObjectId of inserted document as url parameter
+            # Attempt to insert or update document in employees collection
+            ret = mongo.db.employees.replace_one(
+                {"_id": ObjectId(user_id)},
+                employee,
+                upsert=True
+            )
+            _id = user_id
+            if ret.upserted_id:
+                _id = str(ret.upserted_id)
+            return redirect(url_for('submit', user_id=_id))
+
 
     # GET
     # try to lookup by employee_id in database
-    # display success message and provisions or redirectto 'user/'
+    # display success message and provisions or redirect to 'user/'
 
     return render_template(
         "submit.html", page_title="Submit"
