@@ -11,10 +11,10 @@
     <h1 class="mt-5 text-center">Hello, {{ fname }}!</h1>
     <h2 class="h4 text-center">See workspace recommendations:</h2>
     <p class="lead">
-      Click on a particular spot to see a list of common disabilities that could be related to that area of the workspace.
+      Click on a particular spot to see a list of common considerations that could be related to that area of the workspace.
     </p>
     <p>
-      Once you’ve selected a disability, we’ll show you some suggestions, hardware or software, that your employer can provision to help make your workspace more accessible.
+      Once you’ve selected a consideration, we’ll show you some suggestions, hardware or software, that your employer can provision to help make your workspace more accessible.
     </p>
   </section>
 
@@ -38,8 +38,8 @@
             <div class="accordion-body">
               {% for provision in category.provisions %}
                 <div class="provision-item">
-                  <input type="checkbox" name="" id="{{ provision._id }}">
-                  <label for="{{ provision._id }}">{{ provision.name }}</label>
+                  <input type="checkbox" id="{{ provision._id }}" data-text="{{ provision.name }}">
+                  <label for="{{ provision._id }}"><span>{{ provision.name }}</span></label>
                 </div>
               {% endfor %}
             </div>
@@ -65,8 +65,8 @@
             <div class="accordion-body">
               {% for provision in category.provisions %}
                 <div class="provision-item">
-                  <input type="checkbox" name="" id="{{ provision._id }}">
-                  <label for="{{ provision._id }}">{{ provision.name }}</label>
+                  <input type="checkbox" id="{{ provision._id }}" data-text="{{ provision.name }}">
+                  <label for="{{ provision._id }}"><span>{{ provision.name }}</span></label>
                 </div>
               {% endfor %}
             </div>
@@ -91,8 +91,8 @@
             <div class="accordion-body">
               {% for provision in category.provisions %}
                 <div class="provision-item">
-                  <input type="checkbox" name="" id="{{ provision._id }}">
-                  <label for="{{ provision._id }}">{{ provision.name }}</label>
+                  <input type="checkbox" id="{{ provision._id }}" data-text="{{ provision.name }}">
+                  <label for="{{ provision._id }}"><span>{{ provision.name }}</span></label>
                 </div>
               {% endfor %}
 
@@ -106,7 +106,7 @@
   </div>
 
   <div class="container p-5">
-    <ul>
+    <ul id="provisions-list">
 
     </ul>
   </div>
