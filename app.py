@@ -172,7 +172,7 @@ def submit(user_id=None):
     ]))
 
     return render_template(
-        "submit.html", page_title="Submit", employee=employee
+        "submit.html", page_title="Submit", employee=employee[0]
     )
 
 

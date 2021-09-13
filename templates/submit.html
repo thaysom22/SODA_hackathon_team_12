@@ -5,8 +5,17 @@
 
 {% block content %}
 
-<div class="content-wrapper pt-0">
-
+<div class="content-wrapper px-5">
+  <section>
+    {{ employee.first_name }} {{ employee.last_name }}
+    <div class="">
+      <ul>
+        {% for provision in employee.provisions %}
+          <li>{{ provision.name }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </section>
 </div>
 
 {% endblock %}
