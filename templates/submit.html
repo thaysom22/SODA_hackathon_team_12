@@ -5,26 +5,23 @@
 
 {% block content %}
 
-<<<<<<< HEAD
-<div class="content-wrapper pt-0">
-
-    {# test employee data dump #}
-    {% if employee %}
-        {{ employee }}
-    {% endif %}
-=======
 <div class="content-wrapper px-5">
-  <section>
-    {{ employee.first_name }} {{ employee.last_name }}
-    <div class="">
-      <ul>
-        {% for provision in employee.provisions %}
-          <li>{{ provision.name }}</li>
-        {% endfor %}
-      </ul>
-    </div>
-  </section>
->>>>>>> eba1e0539a90ad541175298f2c6ac45318f93a6e
-</div>
+    
+    <section class="mt-5">
+        {% if employee %}
+            <h3><strong>Thank you</strong> {{ employee.first_name }} {{ employee.last_name }}</h3>
+            <p>We received your selected provisions:</p>
+            <div class="">
+            <ul>
+                {% for provision in employee.provisions %}
+                <li>{{ provision.name }}</li>
+                {% endfor %}
+            </ul>
+            </div>
+        {% else %}
+            <p>Your selections could not be found/registered - <a href='/'>please select again</a></p>
+        {% endif %}
+      </section>
+
 
 {% endblock %}
