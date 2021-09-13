@@ -9,7 +9,7 @@ var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
 
 // Allow buttons elements in popovers
 var allowList = bootstrap.Popover.Default.allowList;
-allowList.button = ["data-bs-toggle", "data-bs-target"];
+allowList.button = ["data-bs-toggle", "data-bs-target", "class"];
 allowList.input = ["type", "name", "id", "data-text"];
 allowList.label = ["for"]
 allowList.li = ["data-id", "id"];
@@ -62,7 +62,7 @@ function adjustProvisionList(text, id, add) {
       item.appendChild(itemData);
       // create delete button
       const itemDelete = document.createElement("button");
-      itemDelete.innerText = "Remove";
+      itemDelete.innerText = "X";
       itemDelete.addEventListener("click", (e) => {
         e.preventDefault();
         e.stopPropagation();
@@ -70,8 +70,11 @@ function adjustProvisionList(text, id, add) {
         const checkboxElem = document.getElementById(id);
         checkboxElem.checked = false;
         // remove parent li element
-        adjustProvisionList(null, id, false);  
+        adjustProvisionList(null, id, false);
       });
+      itemDelete.classList.add("btn");
+      itemDelete.classList.add("btn-outline-danger");
+      itemDelete.classList.add("btn-sm");
       item.appendChild(itemDelete);
       // Append li element to ul
       provisionList.appendChild(item);
