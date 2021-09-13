@@ -68,12 +68,14 @@ function adjustProvisionList(title, description, id, add) {
       </dl>
       `;
       item.classList = "container text-start";
+      
       // Create encapsulated hidden input
       const itemData = document.createElement("input");
       itemData.name = "provisions";
       itemData.type = "hidden";
       itemData.value = id;
       item.appendChild(itemData);
+
       // create delete button
       const deleteContainer = document.createElement("div");
       deleteContainer.classList = "container text-center py-2";
