@@ -6,19 +6,6 @@
 {% block content %}
 
 <div class="content-wrapper px-5">
-<<<<<<< HEAD
-  <section>
-    {{ employee.first_name }} {{ employee.last_name }}
-    <div class="">
-      <ul>
-        {% for provision in employee.provisions %}
-          <li>{{ provision.name }}</li>
-        {% endfor %}
-      </ul>
-    </div>
-  </section>
-</div>
-=======
     
     <section class="mt-5">
         {% if employee %}
@@ -36,6 +23,5 @@
         {% endif %}
       </section>
 
->>>>>>> 7c666ebe0304919d4b62dc3497c06643eb55200a
 
 {% endblock %}
