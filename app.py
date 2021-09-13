@@ -124,19 +124,18 @@ def user():
 
 
 @app.route("/submit", methods=["GET", "POST"])
+@app.route("/submit/<user_id>", methods=["GET", "POST"])
 @requires_user
-def submit():
+def submit(user_id=None):
     """
     POST: Receives the user's selections,
     associates with session user and adds to database
     GET: displays summary for user's' selections
     """
 
-
-
     if request.method == "POST":
         provisions = request.form.getlist("provisions")
-        # clean and validate data sent from client
+        # Clean and validate data sent from client
         if provisions:
             # Create new record
             provisions = list(map(lambda i:ObjectId(i), provisions))
