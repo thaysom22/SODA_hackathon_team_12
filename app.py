@@ -152,17 +152,18 @@ def submit(user_id=None):
                 upsert=True
             )
             _id = user_id
+
             if ret.upserted_id:
                 _id = str(ret.upserted_id)
+            # Redirect to show results
             return redirect(url_for('submit', user_id=_id))
 
 
     # GET
-    # try to lookup by employee_id in database
-    # display success message and provisions or redirect to 'user/'
+    employee = mongo.db.employees.find_one({"_id": ObjectId(user_id)})
 
     return render_template(
-        "submit.html", page_title="Submit"
+        "submit.html", page_title="Submit", employee=employee
     )
 
 
