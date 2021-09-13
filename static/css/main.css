@@ -2,6 +2,21 @@
   --bs-primary: #001f3f;
 }
 
-main > .container {
-  padding: 4rem 2rem 0;
+.content-wrapper {
+  padding-top: 4rem;
+  max-width: 800px;
+}
+
+/* About Page Styles */
+
+#wheelchair-user-svg {
+  max-width: 75%;
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+  .collapse-row {
+    flex-direction: row !important;
+    gap: 2rem;
+  }
 }
