@@ -58,22 +58,24 @@ function adjustProvisionList(title, description, id, add) {
     // Only add item if it's not already in the list
     if (!document.getElementById(`submit-${id}`)) {
       // Create <li>
-      const container = document.createElement("div");
-      container.classList = "container text-start";
-      container.id = `submit-${id}`;
-      const item = document.createElement("li");
+      const item = document.createElement("div");
+      item.classList = "container text-start";
+      item.id = `submit-${id}`;
       item.innerHTML = `
       <dl class="row mb-0">
         <dt class="col-sm-3">${title}</dt>
         <dd class="col-sm-9">${description}</dd>
       </dl>
       `;
+      item.classList = "container text-start";
+      
       // Create encapsulated hidden input
       const itemData = document.createElement("input");
       itemData.name = "provisions";
       itemData.type = "hidden";
       itemData.value = id;
       item.appendChild(itemData);
+
       // create delete button
       const deleteContainer = document.createElement("div");
       deleteContainer.classList = "container text-center py-2";
@@ -86,14 +88,14 @@ function adjustProvisionList(title, description, id, add) {
         e.stopPropagation();
         // uncheck checkbox element in accordian for deleted provision
         const checkboxElem = document.getElementById(id);
-        checkboxElem.checked = false;
+        if (checkboxElem) checkboxElem.checked = false;
         // remove parent li element
         adjustProvisionList(null, null, id, false);
       });
+      item.appendChild(deleteContainer);
+
       // Append to list
-      provisionList.appendChild(container);
-      container.appendChild(item);
-      container.appendChild(deleteContainer);
+      provisionList.appendChild(item);
     }
   } else {
     // Remove item if unchecked
