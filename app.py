@@ -44,43 +44,41 @@ def home():
     """
 
     # Performs an join like query to get all values of ws_considerations with
-    # corresponding provisions attached 
+    # corresponding provisions attached
     # $unwind provision_categories array to create document copy for each element in array
     # $lookup accepts Array type as localField and performs overwrite
     # $group recreates original document structure with provision_categories as an array
     # $first takes value of 'name', 'desc' and 'ui_location' fields from first document in each group
     considerations_data = list(mongo.db.ws_considerations.aggregate([
         {
-            "$unwind" : {
-                "path" : "$provision_categories"
+            "$unwind": {
+                "path": "$provision_categories"
             }
         },
         {
-            "$lookup" : {
-                "from" : "provisions",
-                "localField" : "provision_categories.provisions",
-                "foreignField" : "_id",
-                "as" : "provision_categories.provisions"
+            "$lookup": {
+                "from": "provisions",
+                "localField": "provision_categories.provisions",
+                "foreignField": "_id",
+                "as": "provision_categories.provisions"
             }
         },
         {
-            "$group" : {
-                "_id" : "$_id",
-                "name": { "$first": "$name" },
-                "desc": { "$first": "$desc" },
-                "ui_location": { "$first": "$ui_location" },
-                "provision_categories" : {
-                    "$push" : "$provision_categories"
+            "$group": {
+                "_id": "$_id",
+                "name": {"$first": "$name"},
+                "desc": {"$first": "$desc"},
+                "ui_location": {"$first": "$ui_location"},
+                "provision_categories": {
+                    "$push": "$provision_categories"
                 }
             }
         }
     ]))
 
-
     return render_template(
         "index.html",
         page_title="Home",
-        considerations=considerations,
         considerations_data=considerations_data,
         fname=session["user"]["firstname"]
     )
@@ -135,5 +133,5 @@ def submit():
 
 if __name__ == "__main__":
     app.run(debug=debugging,
-        host=os.environ.get("IP"),
-        port=int(os.environ.get("PORT")))
+            host=os.environ.get("IP"),
+            port=int(os.environ.get("PORT")))
