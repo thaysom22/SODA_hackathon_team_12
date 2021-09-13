@@ -134,45 +134,61 @@ def submit(user_id=None):
     """
 
     if request.method == "POST":
-        provisions = request.form.getlist("provisions")
-        # Clean and validate data sent from client
-        if provisions:
-            # Create new record
-            provisions = list(map(lambda i:ObjectId(i), provisions))
-            employee = {
-                "first_name": session["user"]["firstname"],
-                "last_name": session["user"]["lastname"],
-                "provisions_ids": provisions,
-                "other_info": None
-            }
-            # Attempt to insert or update document in employees collection
-            ret = mongo.db.employees.replace_one(
-                {"_id": ObjectId(user_id)},
-                employee,
-                upsert=True
-            )
-            _id = user_id
+        try:
+            provisions = request.form.getlist("provisions")
+            # Clean and validate data sent from client
+            if provisions:
+                # Create new record
+                provisions = list(map(lambda i:ObjectId(i), provisions))
+                employee = {
+                    "first_name": session["user"]["firstname"],
+                    "last_name": session["user"]["lastname"],
+                    "provisions_ids": provisions,
+                    "other_info": None
+                }
+                # Attempt to insert or update document in employees collection
+                ret = mongo.db.employees.replace_one(
+                    {"_id": ObjectId(user_id)},
+                    employee,
+                    upsert=True
+                )
+                _id = user_id
 
-            if ret.upserted_id:
-                _id = str(ret.upserted_id)
-            # Redirect to show results
-            return redirect(url_for('submit', user_id=_id))
+                if ret.upserted_id:
+                    _id = str(ret.upserted_id)
+                # Redirect to show results
+                return redirect(url_for('submit', user_id=_id))
+            else:
+                return redirect(url_for('submit'))
+        except Exception:
+            return redirect(url_for('submit'))
 
 
     # GET
-    employee = list(mongo.db.employees.aggregate([
-        {
-            "$lookup": {
-                "from": "provisions",
-                "localField": "provisions_ids",
-                "foreignField": "_id",
-                "as": "provisions"
-            }
-        },
-    ]))
+    employee = None
+    if user_id:
+        try:
+            employee = list(mongo.db.employees.aggregate([
+                {
+                    "$match": {
+                        "_id": ObjectId(user_id),
+                    }
+                },
+                {
+                    "$lookup": {
+                        "from": "provisions",
+                        "localField": "provisions_ids",
+                        "foreignField": "_id",
+                        "as": "provisions"
+                    }
+                },
+            ]))
+        except Exception:
+            pass
+        
 
     return render_template(
-        "submit.html", page_title="Submit", employee=employee
+        "submit.html", page_title="Submit", employee=employee[0]
     )
 
 
