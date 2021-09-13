@@ -160,7 +160,16 @@ def submit(user_id=None):
 
 
     # GET
-    employee = mongo.db.employees.find_one({"_id": ObjectId(user_id)})
+    employee = list(mongo.db.employees.aggregate([
+        {
+            "$lookup": {
+                "from": "provisions",
+                "localField": "provisions_ids",
+                "foreignField": "_id",
+                "as": "provisions"
+            }
+        },
+    ]))
 
     return render_template(
         "submit.html", page_title="Submit", employee=employee
