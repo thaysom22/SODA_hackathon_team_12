@@ -53,3 +53,34 @@
   left: 0;
   top: 0;
 }
+
+#desk-node,
+#input-node,
+#device-node {
+  transition: ease;
+  transition-duration: 0.2s;
+}
+
+#desk-node:hover,
+#input-node:hover,
+#device-node:hover {
+  cursor: pointer;
+}
+
+#desk-node,
+#device-node {
+  r: 7;
+}
+
+#desk-node:hover,
+#device-node:hover {
+  r: 10;
+}
+
+#input-node {
+  r: 5;
+}
+
+#input-node:hover {
+  r: 8;
+}
