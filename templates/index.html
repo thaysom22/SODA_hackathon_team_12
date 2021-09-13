@@ -38,8 +38,8 @@
             <div class="accordion-body">
               {% for provision in category.provisions %}
                 <div class="provision-item">
-                  <input type="checkbox" id="{{ provision._id }}" data-text="{{ provision.name }}">
-                  <label for="{{ provision._id }}"><span>{{ provision.name }}</span></label>
+                  <input class="form-check-input" type="checkbox" id="{{ provision._id }}" data-title="{{ provision.name }}" data-description="{{ provision.desc }}">
+                  <label class="form-check-label" for="{{ provision._id }}"><span>{{ provision.name }}</span></label>
                 </div>
               {% endfor %}
             </div>
@@ -65,8 +65,8 @@
             <div class="accordion-body">
               {% for provision in category.provisions %}
                 <div class="provision-item">
-                  <input type="checkbox" id="{{ provision._id }}" data-text="{{ provision.name }}">
-                  <label for="{{ provision._id }}"><span>{{ provision.name }}</span></label>
+                  <input class="form-check-input" type="checkbox" id="{{ provision._id }}" data-title="{{ provision.name }}" data-description="{{ provision.desc }}">
+                  <label class="form-check-label" for="{{ provision._id }}"><span>{{ provision.name }}</span></label>
                 </div>
               {% endfor %}
             </div>
@@ -91,8 +91,8 @@
             <div class="accordion-body">
               {% for provision in category.provisions %}
                 <div class="provision-item">
-                  <input type="checkbox" id="{{ provision._id }}" data-text="{{ provision.name }}">
-                  <label for="{{ provision._id }}"><span>{{ provision.name }}</span></label>
+                  <input class="form-check-input" type="checkbox" id="{{ provision._id }}" data-title="{{ provision.name }}" data-description="{{ provision.desc }}">
+                  <label class="form-check-label" for="{{ provision._id }}"><span>{{ provision.name }}</span></label>
                 </div>
               {% endfor %}
 
@@ -105,11 +105,14 @@
     </svg>
   </div>
 
-  <div class="container p-5">
-    <form action="/submit" method="post">
-      <ul id="provisions-list"></ul>
-      <input id="provision-form-submit" type="submit" value="Submit" disabled>
-    </form>
+  <div class="container">
+    <h2 class="h4 text-center"> Your recommendations: </h2>
+    <div class="container my-2">
+      <form action="/submit" method="post">
+        <ul class="list-unstyled" id="provisions-list"></ul>
+        <input class="btn btn-primary" id="provision-form-submit" type="submit" value="Submit" disabled>
+      </form>
+    </div>
   </div>
 
 </div>

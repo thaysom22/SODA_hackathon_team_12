@@ -27,6 +27,8 @@
 
 ## 1. Introduction
 
+![Workability (image.jpg?raw=true)
+
 [Back to Top](#table-of-contents)
 ##  2. User Experience
 User experience is one of the most significant things when building a webpage. To do this properly, you should consider:
