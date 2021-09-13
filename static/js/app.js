@@ -9,6 +9,7 @@ var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
 
 // Allow buttons elements in popovers
 var allowList = bootstrap.Popover.Default.allowList;
+
 allowList.button = ["data-bs-toggle", "data-bs-target"];
 allowList.input = ["type", "name", "id", "data-title", "data-description"];
 allowList.label = ["for"];
@@ -90,6 +91,7 @@ function adjustProvisionList(title, description, id, add) {
         const checkboxElem = document.getElementById(id);
         if (checkboxElem) checkboxElem.checked = false;
         // remove parent li element
+
         adjustProvisionList(null, null, id, false);
       });
       item.appendChild(deleteContainer);
