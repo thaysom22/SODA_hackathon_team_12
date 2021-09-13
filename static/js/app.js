@@ -26,6 +26,14 @@ popoverList.forEach(function (popover) {
   });
 });
 
+// Adds back keyboard triggering to popover triggers
+document.addEventListener('keydown', function(event) {
+  const elem = event.target;
+  if (elem.matches('.popover-trigger')) {
+    if (event.code === "Space") elem.dispatchEvent(new Event("click"));
+  }
+});
+
 // React to changes on provision checkboxes
 document.addEventListener('change', function(event) {
   const elem = event.target;

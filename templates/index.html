@@ -24,7 +24,7 @@
     <!-- Workspace Nodes -->
 
     <!-- Device Node -->
-    <circle cx="169" cy="65" r="7" fill="#57B894" id="device-node" tabindex="0" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-html="true"
+    <circle class="popover-trigger" cx="169" cy="65" r="7" fill="#57B894" id="device-node" tabindex="0" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-html="true"
     data-bs-template='<div class="popover" role="tooltip"><h3 class="popover-header"></h3><div class="popover-subheader"><sup >(Expand each option to learn more)</sup></div><div class="popover-body"></div></div>' data-bs-title="Common device considerations:" data-bs-content='
       <div class="accordion popover-accordion" id="device-accordion">
         {% for category in considerations[0].provision_categories %}
@@ -51,7 +51,7 @@
     />
 
     <!-- Input Node -->
-    <circle cx="171" cy="115" r="4.7" fill="#57B894" id="input-node" tabindex="0" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-html="true"
+    <circle class="popover-trigger" cx="171" cy="115" r="4.7" fill="#57B894" id="input-node" tabindex="0" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-html="true"
     data-bs-template='<div class="popover" role="tooltip"><h3 class="popover-header"></h3><div class="popover-subheader"><sup >(Expand each option to learn more)</sup></div><div class="popover-body"></div></div>' data-bs-title="Common input considerations:" data-bs-content='
       <div class="accordion popover-accordion" id="input-accordion">
         {% for category in considerations[1].provision_categories %}
@@ -77,7 +77,7 @@
     '/>
 
     <!-- Desk Node -->
-    <circle cx="265" cy="119" fill="#57B894" id="desk-node" tabindex="0" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-html="true"
+    <circle class="popover-trigger" cx="265" cy="119" fill="#57B894" id="desk-node" tabindex="0" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-html="true"
     data-bs-template='<div class="popover" role="tooltip"><h3 class="popover-header"></h3><div class="popover-subheader"><sup >(Expand each option to learn more)</sup></div><div class="popover-body"></div></div>' data-bs-title="Common mobility considerations:" data-bs-content='
       <div class="accordion popover-accordion" id="mobility-accordion">
         {% for category in considerations[2].provision_categories %}
