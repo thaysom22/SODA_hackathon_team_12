@@ -117,6 +117,12 @@
   r: 8;
 }
 
+#provision-form-submit:disabled {
+  border-color: grey;
+  background-color: grey;
+  color: black;
+}
+
 @media (prefers-reduced-motion) {
   #desk-node,
   #input-node,
