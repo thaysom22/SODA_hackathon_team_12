@@ -10,7 +10,7 @@ var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
 // Allow buttons elements in popovers
 var allowList = bootstrap.Popover.Default.allowList;
 allowList.button = ["data-bs-toggle", "data-bs-target"];
-allowList.input = ["type", "name", "id"];
+allowList.input = ["type", "name", "id", "data-text"];
 allowList.label = ["for"]
 allowList.li = ["data-id", "id"];
 
@@ -28,7 +28,24 @@ popoverList.forEach(function (popover) {
 
 // React to changes on provision checkboxes
 document.addEventListener('change', function(event) {
-  if (event.target.matches('.provision-item > input[type="checkbox"]')) {
-    console.log(event);
+  const elem = event.target;
+  if (elem.matches('.provision-item > input[type="checkbox"]')) {
+    adjustProvisionList(elem.dataset.text, elem.id, elem.checked);
   }
 });
+
+// Adds or removes provision list items. TODO: Add a delete button to items.
+function adjustProvisionList(text, id, add) {
+  const provisionList = document.getElementById("provisions-list");
+
+  if (add) {
+    if (!document.getElementById(`submit-${id}`)) {
+      const item = document.createElement("li");
+      item.id = `submit-${id}`;
+      item.innerText = text;
+      provisionList.appendChild(item);
+    }
+  } else {
+    provisionList.removeChild(document.getElementById(`submit-${id}`));
+  }
+}
