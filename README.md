@@ -27,7 +27,8 @@
 
 ## 1. Introduction
 
-![Workability (https://github.com/[thaysom22]/[SODA_hackathon_team_12]/blob/[main]/image.jpg?raw=true)
+Click [here](https://thaysom22.github.io/SODA_hackathon_team_12/index.html) to visit the live site.
+<img src="assets/Images/image.jpg">
 
 [Back to Top](#table-of-contents)
 ##  2. User Experience
