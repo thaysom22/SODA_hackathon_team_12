@@ -158,11 +158,8 @@ def submit(user_id=None):
                     _id = str(ret.upserted_id)
                 # Redirect to show results
                 return redirect(url_for('submit', user_id=_id))
-            else:
-                return redirect(url_for('submit'))
         except Exception:
-            return redirect(url_for('submit'))
-
+            pass
 
     # GET
     employee = None
@@ -182,13 +179,13 @@ def submit(user_id=None):
                         "as": "provisions"
                     }
                 },
-            ]))
+            ]))[0]
         except Exception:
             pass
-        
+    
 
     return render_template(
-        "submit.html", page_title="Submit", employee=employee[0]
+        "submit.html", page_title="Submit", employee=employee
     )
 
 

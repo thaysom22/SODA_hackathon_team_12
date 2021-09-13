@@ -6,6 +6,7 @@
 {% block content %}
 
 <div class="content-wrapper px-5">
+<<<<<<< HEAD
   <section>
     {{ employee.first_name }} {{ employee.last_name }}
     <div class="">
@@ -17,5 +18,24 @@
     </div>
   </section>
 </div>
+=======
+    
+    <section class="mt-5">
+        {% if employee %}
+            <h3><strong>Thank you</strong> {{ employee.first_name }} {{ employee.last_name }}</h3>
+            <p>We received your selected provisions:</p>
+            <div class="">
+            <ul>
+                {% for provision in employee.provisions %}
+                <li>{{ provision.name }}</li>
+                {% endfor %}
+            </ul>
+            </div>
+        {% else %}
+            <p>Your selections could not be found/registered - <a href='/'>please select again</a></p>
+        {% endif %}
+      </section>
+
+>>>>>>> 7c666ebe0304919d4b62dc3497c06643eb55200a
 
 {% endblock %}
