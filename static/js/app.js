@@ -87,7 +87,7 @@ function adjustProvisionList(title, description, id, add) {
         e.stopPropagation();
         // uncheck checkbox element in accordian for deleted provision
         const checkboxElem = document.getElementById(id);
-        checkboxElem.checked = false;
+        if (checkboxElem) checkboxElem.checked = false;
         // remove parent li element
         adjustProvisionList(null, null, id, false);
       });
