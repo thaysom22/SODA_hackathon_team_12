@@ -3,6 +3,7 @@ from functools import wraps
 
 from flask import (Flask, redirect, request, render_template, url_for, session)
 from flask_pymongo import PyMongo
+from bson import ObjectId
 
 # ./server.sh not working for me on gitpod
 if os.path.exists("env.py"):
@@ -123,30 +124,71 @@ def user():
 
 
 @app.route("/submit", methods=["GET", "POST"])
+@app.route("/submit/<user_id>", methods=["GET", "POST"])
 @requires_user
-def submit():
+def submit(user_id=None):
     """
-    POST: Receives the user's selections, 
+    POST: Receives the user's selections,
     associates with session user and adds to database
     GET: displays summary for user's' selections
     """
 
-    
+    if request.method == "POST":
+        try:
+            provisions = request.form.getlist("provisions")
+            # Clean and validate data sent from client
+            if provisions:
+                # Create new record
+                provisions = list(map(lambda i:ObjectId(i), provisions))
+                employee = {
+                    "first_name": session["user"]["firstname"],
+                    "last_name": session["user"]["lastname"],
+                    "provisions_ids": provisions,
+                    "other_info": None
+                }
+                # Attempt to insert or update document in employees collection
+                ret = mongo.db.employees.replace_one(
+                    {"_id": ObjectId(user_id)},
+                    employee,
+                    upsert=True
+                )
+                _id = user_id
 
-    # if request.method == "POST":
-        # clean and validate data sent from client
-        
-        # associate provisions with user in session
-        # attempt to insert document into employees collection
-        # if successful, redirect to 'submit/' 
-        # with ObjectId of inserted document as url parameter
+                if ret.upserted_id:
+                    _id = str(ret.upserted_id)
+                # Redirect to show results
+                return redirect(url_for('submit', user_id=_id))
+            else:
+                return redirect(url_for('submit'))
+        except Exception:
+            return redirect(url_for('submit'))
+
 
     # GET
-    # try to lookup by employee_id in database
-    # display success message and provisions or redirectto 'user/'  
+    employee = None
+    if user_id:
+        try:
+            employee = list(mongo.db.employees.aggregate([
+                {
+                    "$match": {
+                        "_id": ObjectId(user_id),
+                    }
+                },
+                {
+                    "$lookup": {
+                        "from": "provisions",
+                        "localField": "provisions_ids",
+                        "foreignField": "_id",
+                        "as": "provisions"
+                    }
+                },
+            ]))
+        except Exception:
+            pass
+        
 
     return render_template(
-        "submit.html", page_title="Submit"
+        "submit.html", page_title="Submit", employee=employee[0]
     )
 
 
