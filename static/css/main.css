@@ -18,6 +18,15 @@
   font-weight: 500;
 }
 
+.input-group {
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.input-group > .form-control {
+  width: 100%;
+}
+
 #hamburger {
   stroke: var(--bs-primary);
 }
@@ -30,6 +39,18 @@
 
 #wheelchair-user-svg {
   max-width: 75%;
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+  .input-group {
+    flex-direction: row;
+    gap: 0;
+  }
+
+  .input-group > .form-control {
+    width: 1%;
+  }
 }
 
 /* Medium devices (tablets, 768px and up) */
