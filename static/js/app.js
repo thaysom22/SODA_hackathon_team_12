@@ -58,10 +58,9 @@ function adjustProvisionList(title, description, id, add) {
     // Only add item if it's not already in the list
     if (!document.getElementById(`submit-${id}`)) {
       // Create <li>
-      const container = document.createElement("li");
-      container.classList = "container text-start";
-      container.id = `submit-${id}`;
       const item = document.createElement("div");
+      item.classList = "container text-start";
+      item.id = `submit-${id}`;
       item.innerHTML = `
       <dl class="row mb-0">
         <dt class="col-sm-3">${title}</dt>
