@@ -108,7 +108,7 @@ def user():
     """
     if request.method == 'POST':
         # Ensure firstname provided, but allow lastname to be blank.
-        # We don't want to discriminate against Madonna
+        # We don't want to discriminate against Madonna :)
         if "firstname" in request.form and request.form["firstname"]:
             session["user"] = {
                 "firstname": request.form["firstname"],
@@ -126,9 +126,28 @@ def user():
 @requires_user
 def submit():
     """
-    Submits the user's selections
+    POST: Receives the user's selections, 
+    associates with session user and adds to database
+    GET: displays summary for user's' selections
     """
-    return "<p>Submit success goes here</p>"
+
+    
+
+    # if request.method == "POST":
+        # clean and validate data sent from client
+        
+        # associate provisions with user in session
+        # attempt to insert document into employees collection
+        # if successful, redirect to 'submit/' 
+        # with ObjectId of inserted document as url parameter
+
+    # GET
+    # try to lookup by employee_id in database
+    # display success message and provisions or redirectto 'user/'  
+
+    return render_template(
+        "submit.html", page_title="Submit"
+    )
 
 
 if __name__ == "__main__":
