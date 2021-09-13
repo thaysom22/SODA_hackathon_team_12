@@ -48,15 +48,25 @@ function adjustProvisionList(text, id, add) {
   const provisionSubmit = document.getElementById("provision-form-submit");
 
   if (add) {
+    // Only add item if it's not already in the list
     if (!document.getElementById(`submit-${id}`)) {
+      // Create <li>
       const item = document.createElement("li");
       item.id = `submit-${id}`;
       item.innerText = text;
+      // Create encapsulated hidden input
+      const itemData = document.createElement("input");
+      itemData.name = "provisions";
+      itemData.type = "hidden";
+      itemData.value = id;
+      item.appendChild(itemData);
+      // Append to list
       provisionList.appendChild(item);
     }
   } else {
+    // Remove item if unchecked
     provisionList.removeChild(document.getElementById(`submit-${id}`));
   }
-  
+  // If there are items in the list, submit button should be enabled
   provisionSubmit.disabled = !(provisionList.getElementsByTagName("li").length > 0);
 }
