@@ -45,6 +45,7 @@ document.addEventListener('change', function(event) {
 // Adds or removes provision list items. TODO: Add a delete button to items.
 function adjustProvisionList(text, id, add) {
   const provisionList = document.getElementById("provisions-list");
+  const provisionSubmit = document.getElementById("provision-form-submit");
 
   if (add) {
     if (!document.getElementById(`submit-${id}`)) {
@@ -56,4 +57,6 @@ function adjustProvisionList(text, id, add) {
   } else {
     provisionList.removeChild(document.getElementById(`submit-${id}`));
   }
+  
+  provisionSubmit.disabled = !(provisionList.getElementsByTagName("li").length > 0);
 }
