@@ -58,16 +58,15 @@ function adjustProvisionList(title, description, id, add) {
     // Only add item if it's not already in the list
     if (!document.getElementById(`submit-${id}`)) {
       // Create <li>
-      const container = document.createElement("div");
-      container.classList = "container text-start";
-      container.id = `submit-${id}`;
       const item = document.createElement("li");
+      item.id = `submit-${id}`;
       item.innerHTML = `
       <dl class="row mb-0">
         <dt class="col-sm-3">${title}</dt>
         <dd class="col-sm-9">${description}</dd>
       </dl>
       `;
+      item.classList = "container text-start";
       // Create encapsulated hidden input
       const itemData = document.createElement("input");
       itemData.name = "provisions";
@@ -90,10 +89,10 @@ function adjustProvisionList(title, description, id, add) {
         // remove parent li element
         adjustProvisionList(null, null, id, false);
       });
+      item.appendChild(deleteContainer);
+
       // Append to list
-      provisionList.appendChild(container);
-      container.appendChild(item);
-      container.appendChild(deleteContainer);
+      provisionList.appendChild(item);
     }
   } else {
     // Remove item if unchecked
