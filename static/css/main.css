@@ -187,3 +187,7 @@
   cursor: pointer;
   user-select: none;
 }
+
+.popover-trigger {
+  outline: none !important;
+}
