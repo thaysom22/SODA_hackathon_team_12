@@ -80,7 +80,9 @@ def home():
     return render_template(
         "index.html",
         page_title="Home",
-        considerations_data=considerations_data
+        considerations=considerations,
+        considerations_data=considerations_data,
+        fname=session["user"]["firstname"]
     )
 
 

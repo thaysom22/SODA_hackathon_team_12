@@ -35,3 +35,60 @@
     gap: 2rem;
   }
 }
+
+/* Home Page Styles */
+
+/* This css is what allows the inline svg to be responsive */
+.scaling-svg-container {
+  position: relative;
+  height: 0;
+  width: 100%;
+  padding-top: 66%; /* (svg height / svg width) * width-value; */
+}
+
+.scaling-svg {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+}
+
+#desk-node,
+#input-node,
+#device-node {
+  transition: ease;
+  transition-duration: 0.2s;
+}
+
+#desk-node:hover,
+#input-node:hover,
+#device-node:hover {
+  cursor: pointer;
+}
+
+#desk-node,
+#device-node {
+  r: 7;
+}
+
+#desk-node:hover,
+#device-node:hover {
+  r: 10;
+}
+
+#input-node {
+  r: 5;
+}
+
+#input-node:hover {
+  r: 8;
+}
+
+@media (prefers-reduced-motion) {
+  #desk-node,
+  #input-node,
+  #device-node {
+    transition: none;
+  }
+}
