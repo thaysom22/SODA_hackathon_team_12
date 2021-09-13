@@ -8,6 +8,7 @@ __pycache__/
 node_modules/
 .github/
 .vscode
+.eslintrc.js
 
 # Python virtual environment ignores
 .venv
