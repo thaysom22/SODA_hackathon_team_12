@@ -58,10 +58,9 @@ function adjustProvisionList(title, description, id, add) {
     // Only add item if it's not already in the list
     if (!document.getElementById(`submit-${id}`)) {
       // Create <li>
-      const container = document.createElement("li");
-      container.classList = "container text-start";
-      container.id = `submit-${id}`;
       const item = document.createElement("div");
+      item.classList = "container text-start";
+      item.id = `submit-${id}`;
       item.innerHTML = `
       <dl class="row mb-0">
         <dt class="col-sm-3">${title}</dt>
@@ -87,7 +86,7 @@ function adjustProvisionList(title, description, id, add) {
         e.stopPropagation();
         // uncheck checkbox element in accordian for deleted provision
         const checkboxElem = document.getElementById(id);
-        checkboxElem.checked = false;
+        if (checkboxElem) checkboxElem.checked = false;
         // remove parent li element
         adjustProvisionList(null, null, id, false);
       });
