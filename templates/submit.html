@@ -5,12 +5,26 @@
 
 {% block content %}
 
+<<<<<<< HEAD
 <div class="content-wrapper pt-0">
 
     {# test employee data dump #}
     {% if employee %}
         {{ employee }}
     {% endif %}
+=======
+<div class="content-wrapper px-5">
+  <section>
+    {{ employee.first_name }} {{ employee.last_name }}
+    <div class="">
+      <ul>
+        {% for provision in employee.provisions %}
+          <li>{{ provision.name }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </section>
+>>>>>>> eba1e0539a90ad541175298f2c6ac45318f93a6e
 </div>
 
 {% endblock %}
